@@ -2,7 +2,7 @@
  * hasUniqueChars.c
  * Name:Savannah Haugen
  *
- * 
+ * Description: 
  * Author: 
  */
 
@@ -88,11 +88,11 @@ bool hasUniqueChars(char * inputStr) {
 
   // TODO: Declare additional variables you need here
 
-  
+  checkInvalid(inputStr);
   for(i = 0; i < strlen(inputStr); i++) {
     nextChar = inputStr[i];
     // TODO: Add your code here to check nextChar, see if it is a duplicate, and update the checkBits variables
-    checkInvalid(*nextChar);
+   
 
     if (nextChar >= 'A' && nextChar <= 'z') {
         unsigned long mask = 1UL << (nextChar - 'A');
@@ -108,22 +108,21 @@ bool hasUniqueChars(char * inputStr) {
             return false;  
         }
         checkBitsexcl_amp |= mask;  
-    } else {
-        checkInvalid(nextChar); 
-    }
+    } 
+    
 
     // -------------------------------------------------------------
     // Below this are examples of debugging print statements you could use
     // Move/use as makes sense for you!
     // Modify to work on checkBitsexcl_amp
     // TODO: Comment out or remove when your function works correctly
-    printf("nextchar int value: %d\n", nextChar);
-    char char_str[2] = "\0";
-    char_str[0] = nextChar;
-    strcpy(debug_str_A_z, "nextchar: ");
-    strcat(debug_str_A_z, char_str);
-    strcat(debug_str_A_z,", checkBitsA_z: \n");
-    seeBits(checkBitsA_z, debug_str_A_z);
+    // printf("nextchar int value: %d\n", nextChar);
+    // char char_str[2] = "\0";
+    // char_str[0] = nextChar;
+    // strcpy(debug_str_A_z, "nextchar: ");
+    // strcat(debug_str_A_z, char_str);
+    // strcat(debug_str_A_z,", checkBitsA_z: \n");
+    // seeBits(checkBitsA_z, debug_str_A_z);
     // ------------------------------------------------------------- 
   }
 

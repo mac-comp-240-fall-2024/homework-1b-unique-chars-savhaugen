@@ -1,5 +1,6 @@
 /*
- * TODO: Add an appropriate descriptive comment here
+ * Name: Savannah Haugen
+ *Description: Testing file hasUniqueChars function with all ASCII characters
  */
 
 #include <stdio.h>    // printf
@@ -48,10 +49,62 @@ int main() {
   strcpy(string3, "abcdefghij");
   ok = hasUniqueChars(string3);
   assert(ok);
-  
-  // TODO: add your tests here
+
+//Test 3: tests upper and lower case alphabet chars
+  strcpy(string3, "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+//Test 4: Passing Special Characters
+  strcpy(string3, "!@#$%^&*()");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  //Test 5: Failing Special Characters
+  strcpy(string3, "@#$^&&()!!");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));
+
+  //Test 6: Multiple Spaces
+  strcpy(string3, "a b c ");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  //Test 7: Passing Numbers
+  strcpy(string3, "123456789");
+  ok = hasUniqueChars(string3);
+  assert((ok));
+
+  //Test 7: Failing Numbers
+  strcpy(string3, "1223");
+  ok = hasUniqueChars(string3);
+  assert(!(ok));
+
+  //Test 8: More Special Characters
+  strcpy(string3, "<>?:|}{+-_");
+  ok = hasUniqueChars(string3);
+  assert(ok);
 
 
+  //Test 9: Special Charcters with Alphabet
+  strcpy(string3, "abc?mni@#");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+//Test 10: Special Characters with Numbers
+  strcpy(string3, "123#$^&");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  //Test 11: Special Characters with Numbers and Alphabet
+  strcpy(string3, "123abdcg?><");
+  ok = hasUniqueChars(string3);
+  assert(ok);
+
+  //Test 12: Non-Printing Characters (Tab)
+  strcpy(string3, " ");
+  ok = hasUniqueChars(string3);
+  assert(ok);
 
   // NOTE: if you add a \n to any tests, this should cause the
   //       exit failure given. Keep this test last so you can check 
