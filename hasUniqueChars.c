@@ -1,7 +1,7 @@
 /*
  * hasUniqueChars.c
- * 
- * TODO: replace this line with lines containing a description
+ * Name:Savannah Haugen
+ *
  * 
  * Author: 
  */
@@ -32,8 +32,7 @@ void seeBits(unsigned long value, char *debug_text) {
 }
 
 
-// TODO: Read this carefully to see how to loop over characters of a string
-// TODO: (Remove TODOs once you have completed the task they describe)
+
 /*
  * Given an input string of chars, check for any non-printing
  * characters and print an error and exit if the string has any.
@@ -93,6 +92,25 @@ bool hasUniqueChars(char * inputStr) {
   for(i = 0; i < strlen(inputStr); i++) {
     nextChar = inputStr[i];
     // TODO: Add your code here to check nextChar, see if it is a duplicate, and update the checkBits variables
+    checkInvalid(*nextChar);
+
+    if (nextChar >= 'A' && nextChar <= 'z') {
+        unsigned long mask = 1UL << (nextChar - 'A');
+        if (checkBitsA_z & mask) {  
+            return false; 
+        }
+        checkBitsA_z |= mask;  
+    }
+
+    else if (nextChar >= '!' && nextChar <= '@') {
+        unsigned long mask = 1UL << (nextChar - '!'); 
+        if (checkBitsexcl_amp & mask) {  
+            return false;  
+        }
+        checkBitsexcl_amp |= mask;  
+    } else {
+        checkInvalid(nextChar); 
+    }
 
     // -------------------------------------------------------------
     // Below this are examples of debugging print statements you could use
