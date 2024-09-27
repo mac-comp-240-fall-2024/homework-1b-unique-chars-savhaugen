@@ -2,8 +2,9 @@
  * hasUniqueChars.c
  * Name:Savannah Haugen
  *
- * Description: 
- * Author: 
+ * Description: Function to determine whether or not a string has repeat
+ * ASCII characters
+ * 
  */
 
 #include <stdio.h>  // fprintf, printf
@@ -15,7 +16,7 @@
 
 #include "binary_convert.h"
 
-
+//comment
 /*
  * This function is for debugging by printing out the value
  * of an input insigned long as a binary string.
@@ -30,8 +31,6 @@ void seeBits(unsigned long value, char *debug_text) {
   free(bin_str);
   
 }
-
-
 
 /*
  * Given an input string of chars, check for any non-printing
@@ -54,8 +53,10 @@ void checkInvalid(char * inputStr) {
 
 
 /*
- * TODO: Replace this code by a good description this function takes in, does and returns.
- * Include the error conditions that cause it to exit with failure.
+*Description: This function takes in a string of ASCII chars and determines if
+*any of the chars are repeated in the string. This function returns a boolean,
+*which is true if there are no repeat charcters, and false if any of the 
+*characters are repeated. It will exit if the input string is invalid.
  */
 bool hasUniqueChars(char * inputStr) {
   // bail out quickly if any invalid characters
@@ -70,30 +71,9 @@ bool hasUniqueChars(char * inputStr) {
 
   char nextChar;         // next character in string to check
 
-  // -------------------------------------------------------------
-  // This section contains code to display the initial values of checkBitsA_z
-  // and checkBitsexcl_amp, for debugging purposes. 
-  // It also illustrates how to use the seeBits function for debugging.
-  // Printed values should initially be all zeros
-  // TODO: remove or comment out this code when satisfied of function correctness
-  
-  char debug_str_A_z[128];
-  strcpy(debug_str_A_z, "checkBitsA_z before: \n");
-  seeBits(checkBitsA_z, debug_str_A_z);
-  
-  char debug_str_excl_amp[128];
-  strcpy(debug_str_excl_amp, "checkBitsexcl_amp before: \n");
-  seeBits(checkBitsexcl_amp, debug_str_excl_amp);
-  // -------------------------------------------------------------
-
-  // TODO: Declare additional variables you need here
-
   checkInvalid(inputStr);
   for(i = 0; i < strlen(inputStr); i++) {
     nextChar = inputStr[i];
-    // TODO: Add your code here to check nextChar, see if it is a duplicate, and update the checkBits variables
-   
-
     if (nextChar >= 'A' && nextChar <= 'z') {
         unsigned long mask = 1UL << (nextChar - 'A');
         if (checkBitsA_z & mask) {  
@@ -109,21 +89,6 @@ bool hasUniqueChars(char * inputStr) {
         }
         checkBitsexcl_amp |= mask;  
     } 
-    
-
-    // -------------------------------------------------------------
-    // Below this are examples of debugging print statements you could use
-    // Move/use as makes sense for you!
-    // Modify to work on checkBitsexcl_amp
-    // TODO: Comment out or remove when your function works correctly
-    // printf("nextchar int value: %d\n", nextChar);
-    // char char_str[2] = "\0";
-    // char_str[0] = nextChar;
-    // strcpy(debug_str_A_z, "nextchar: ");
-    // strcat(debug_str_A_z, char_str);
-    // strcat(debug_str_A_z,", checkBitsA_z: \n");
-    // seeBits(checkBitsA_z, debug_str_A_z);
-    // ------------------------------------------------------------- 
   }
 
   // if through all the characters, then no duplicates found

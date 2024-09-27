@@ -11,7 +11,7 @@
 
 // declaration of function from hasUniqueChars.c
 bool hasUniqueChars(char * inputStr);
-
+//comment
 
 int main() {
 
